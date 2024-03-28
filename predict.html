@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        background-color: black;
+    }
+    .main
+    {
+        color:white;
+        position:absolute;
+        margin:100px;
+        left:30px;
+    }
+    #main1
+    {
+        color:white;
+        position:absolute;
+        margin:0px;
+        left:355px;
+    }
+    
+    input[type=text]
+    {
+        width:100%;
+        padding:12px;
+        display:inline-block;
+        border:1px solid #ccc;
+        border-radius:4px;
+        box-sizing:border-box;
+    }
+    button[type=submit] {
+            background-color: blue;
+            position: absolute;
+            border: 2px;
+            color: white;
+            padding: 8px 16px;
+            cursor: pointer;
+            top: 120px;
+            left: 450px;
+        }
+        #poster
+        {
+            width: 200px;
+            height: auto;
+            
+        }
+        #title
+        {
+            color:white;
+        }
+        #title2
+        {
+            color:black;
+        }
+        #main
+        {
+            color:white;
+            position:absolute;
+            top:150px;
+            left:10px;
+        }
+</style>
+<body>
+    <h1 id="main1" >
+        WELCOME TO RECOMMENDATION PAGE
+    </h1>
+<form method="get" action="{% url 'result2' %}">
+    <table>
+     <tr class="main">
+        
+     <td align="right">movie name :</td>
+        <td align="left" id="title2"><input type="text" name="movie-name"></td>
+        <button type="submit" name="submit">Submit</td>
+     </tr>
+     </table>
+</form>
+<h1 id="main">
+    Recommended Movies
+</h1>
+{% for context in context_list %}
+            <div class="col-xs-6 col-sm-4 col-md-3" style="margin-top: 350px">
+              <div class="card">
+                    <div class="card-body">
+                  <img class="class-img-top" id="poster" src="{{context.poster_url}}" alt="{{context.title}} Posters">
+                        <h2 class="titles">
+                            <p>
+                                {{context.title}}
+                            </p>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
